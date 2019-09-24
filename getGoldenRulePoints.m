@@ -1,6 +1,6 @@
-function [lowerX,upperX] = getGoldenRulePoints(lowerBound,upperBound)
+function [lowerX,upperX] = GetGoldenRulePoints(lowerBound,upperBound)
 %
-% [lowerX, upperX] = getGoldenRulePoints(lowerBound, upperBound)
+% [lowerX, upperX] = GetGoldenRulePoints(lowerBound, upperBound)
 %
 % This is a function used to get the starting x values for the golden rule 
 % search. It will return these two x values. 

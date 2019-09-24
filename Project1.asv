@@ -2,12 +2,22 @@
 % Author: Parker Lange
 
 % Problem 1
-[lowerX0, upperX0] = getGoldenRulePoints(5, 7); 
-[lowerX1, upperX1] = getGoldenRulePoints(lowerX0, 7); 
-[lowerX2, upperX2] = getGoldenRulePoints(lowerX0, upperX1);
-[lowerX3, upperX3] = getGoldenRulePoints(lowerX2, upperX1); 
+[lowerX0, upperX0] = GetGoldenRulePoints(5, 7); % base function call with bounds of 5 and 7
+[lowerX1, upperX1] = GetGoldenRulePoints(lowerX0, 7); % second function call, throwing out the left region
+[lowerX2, upperX2] = GetGoldenRulePoints(lowerX0, upperX1); % third function call, throwing out right region
+% the final bounds after throwing out the final left region are lowerX2, and upperX1
 
 % Problem 2
+% func is the function used in 2a
+func = @(x) x^10 - (10 * (x^5)) + (0.5 * exp(x)) - 0.45;
+% derivativeFunc is the derivative of func
+derivativeFunc = @(x) (10 * x^9) - (50 * (x^4)) + (0.5 * exp(x)); 
+guessValue = linspace(-3, 3, 400); % 400 guesses from -3 to 3
+root = linspace(1, 400, 1); % 400 space vector filled with guesses
 
-func = @(x) x^10 - (10 * (x^5)) + (0.5 * (e^x)) - 0.45;
-derivFunc @(x) (10 * x^9) - (50 * (x^4)) + (0.5
+% i is a value used for indexing root 
+% fill each spot of root with the root guess 
+% from the function call to newton raphson
+for i = 1:400
+    root(i) = newtonRaphson(guessValue(i), func, derivativeFunc); 
+end % end for 
