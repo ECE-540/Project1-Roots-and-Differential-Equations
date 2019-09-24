@@ -22,4 +22,8 @@ for i = 1:400
     root(i) = NewtonRaphson(guessValue(i), func, derivativeFunc); 
 end % end for 
 
-% [rootValue, iterationsValue] = NewtonRaphson(guessValue(220), func, derivativeFunc); 
+% Bisection function call. Bracket of [1,3] and an error of 1e-10. 
+[bisecIterations, biSecVal] = Bisection(func, 1, 2, 1e-10); 
+% N-R call, we pass in the function, its derivative, the error, and guess
+% we set the guess value to 3, to make the comparison fair. 
+[rootValue, iterationsValue] = NewtonRaphson(2, func, derivativeFunc, 1e-10); 

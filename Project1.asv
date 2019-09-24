@@ -19,5 +19,9 @@ root = linspace(1, 400, 1); % 400 space vector filled with guesses
 % fill each spot of root with the root guess 
 % from the function call to newton raphson
 for i = 1:400
-    root(i) = newtonRaphson(guessValue(i), func, derivativeFunc); 
+    root(i) = NewtonRaphson(guessValue(i), func, derivativeFunc); 
 end % end for 
+
+% [rootValue, iterationsValue] = NewtonRaphson(guessValue(220), func, derivativeFunc); 
+[bisecIterations, biSecVal] = Bisection(func, 1, 3, 1e-10);
+[rootValue, iterationsValue] = NewtonRaphson(1, func, derivateFunc, 1e-10); 
