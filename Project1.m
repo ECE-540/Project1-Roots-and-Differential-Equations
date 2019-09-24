@@ -22,4 +22,4 @@ for i = 1:400
     root(i) = NewtonRaphson(guessValue(i), func, derivativeFunc); 
 end % end for 
 
-[rootValue, iterationsValue] = NewtonRaphson(guessValue(220), func, derivativeFunc); 
+% [rootValue, iterationsValue] = NewtonRaphson(guessValue(220), func, derivativeFunc); 

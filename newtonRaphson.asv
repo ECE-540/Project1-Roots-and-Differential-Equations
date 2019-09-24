@@ -1,7 +1,7 @@
-function [rootLoc,numIterations] = newtonRaphson(initialGuess,func, ...
+function [rootLocation,numIterations] = NewtonRaphson(initialGuess,func, ...
                                    funcDerivative, error, maxIterations)
 % 
-% function [rootLoc,numIterations] = newtonRaphson(initialGuess,func, ...
+% function [rootLoc,numIterations] = NewtonRaphson(initialGuess,func, ...
 %                                    funcDerivative, aoe, maxIterations)
 %
 % This is a function using the newton raphson method to calculate a root
@@ -10,16 +10,17 @@ function [rootLoc,numIterations] = newtonRaphson(initialGuess,func, ...
 %   initalGuess: This is our initial guess for the root of the function
 %   func: This is the function we are evaluating at
 %   funcDerivative: This is the derivative of the function used
-%   aoe: This is our desired margin of error. Once we reach this we are done
+%   error: This is our desired margin of error. Once we reach this we are done
 %   maxIterations: This is the maximum number of times we want to loop
 %                  through this function, searching for a root
 % Outputs:
-%   rootLoc: This is our location of the root of the func
+%   rootLocation: This is our location of the root of the func
 %   numIterations: This is the number of iterations taken to find root
 
 % If the user doesnt inclue 5 items in constructor
 % or if our max iterations is empty
 % then set max iterations to 100
+
 if (nargin < 5 || isempty(maxIterations))
     maxIterations = 100;
 end % end if
@@ -28,21 +29,29 @@ end % end if
 % or if the error is empty, then set our error 
 if (nargin < 4 || isempty(error))
     error = 1e-6; 
-end
+end % end if
 
 numIterations = 0; % sets our initial iterations
 y0 = func(initialGuess); % gets our y naught 
-y0Prime = funcDerivative(initialGuess); % th
-relativeChange = abs(error) * 100; 
+y0Prime = funcDerivative(initialGuess); % gets y prime naught
+relativeChange = abs(error) * 100; % Forces the function to run once 
 
+% This is a while loop for finding our intercept
+% while our relative change is greater than our error, 
+% and while the iterations is less than our max
+% we continue calculations for finding the intercept
 while ((relativeChange > error) && (numIterations < maxIterations))
-    numIterations = numIterations + 1; 
-    newPointX = initialGuess - (y0 / y0Prime);
+    numIterations = numIterations + 1; % increment iterations
+    newPointX = initialGuess - (y0 / y0Prime); % find our new x value
+    % this calcualtes our new relative change
     relativeChange = abs((newPointX - initialGuess) / newPointX); 
-        
-    initialGuess = newPointX; 
-    y0 = func(initialGuess); 
-    y0Prime = funcDerivative(initialGuess); 
-end
+    fprintf("New point %.2f\n", newPointX);     
+    initialGuess = newPointX; % assign our 'guess' to our new point
+    y0 = func(initialGuess); % calculate y naught 
+    y0Prime = funcDerivative(initialGuess); % calculate y naught prime
+    fprintf("y0 
+end % end while
 
-rootLoc = initialGuess; 
+% once we are done looping, we assign
+%the root location to our initial guess
+rootLocation = initialGuess; 

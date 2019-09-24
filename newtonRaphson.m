@@ -45,12 +45,15 @@ while ((relativeChange > error) && (numIterations < maxIterations))
     newPointX = initialGuess - (y0 / y0Prime); % find our new x value
     % this calcualtes our new relative change
     relativeChange = abs((newPointX - initialGuess) / newPointX); 
-        
+    %fprintf("New point %.2f\n", newPointX);     
     initialGuess = newPointX; % assign our 'guess' to our new point
     y0 = func(initialGuess); % calculate y naught 
     y0Prime = funcDerivative(initialGuess); % calculate y naught prime
+    %fprintf("y0 %.2f, y0Prime %.2f\n", y0, y0Prime); 
 end % end while
 
 % once we are done looping, we assign
 %the root location to our initial guess
 rootLocation = initialGuess; 
+%fprintf("rootLocation %.2f", rootLocation); 
+
