@@ -1,0 +1,10 @@
+function [y] = ForwardEuler(funcDerivative,initialX, ...
+                                    finalX, stepSize, initialY)
+    y = zeros((finalX-initialX) / stepSize); 
+    x = zeros((finalX-initalX) / stepSize); 
+    for i = initialX:finalX
+       y(i) = initialY + (stepSize * funcDerivative(initialY)); 
+       initialY = y(i);
+    end
+end
+
