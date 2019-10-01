@@ -22,8 +22,47 @@ for i = 1:400
     root(i) = NewtonRaphson(guessValue(i), func, derivativeFunc); 
 end % end for 
 
+% this is the graph of the roots found vs the interval given
+figure(1)
+plot(guessValue, root); 
+title('Roots Found Vs Range of Numbers');
+ylabel('Roots found');
+xlabel('Range of Numbers');
+
+hold on
+
 % Bisection function call. Bracket of [1,3] and an error of 1e-10. 
 [bisecIterations, biSecVal] = Bisection(func, 1, 2, 1e-10); 
 % N-R call, we pass in the function, its derivative, the error, and guess
 % we set the guess value to 3, to make the comparison fair. 
 [rootValue, iterationsValue] = NewtonRaphson(2, func, derivativeFunc, 1e-10); 
+
+% Problem 3
+% jagged but becomes stable
+funcDerivate = @(y) -8 * y; 
+[x, y] = ForwardEuler(funcDerivate, 0, 10, .2, 10); 
+figure(2)
+title('Forward Euler with step size of 0.2');
+ylabel('Y values');
+xlabel('X values');
+plot(y, x);
+
+hold on
+
+% not stable, bounces from 10 to -10
+[x, y] = ForwardEuler(funcDerivate, 0, 10, .25, 10); 
+figure(3)
+title('Forward Euler with step size of 0.25');
+ylabel('Y values');
+xlabel('X values');
+plot(y, x);
+
+hold on
+
+% stable, goes to 0 nicely
+[x, y] = ForwardEuler(funcDerivate, 0, 10, .01, 10); 
+figure(4)
+title('Forward Euler with step size of 0.01');
+ylabel('Y values');
+xlabel('X values');
+plot(y, x);
