@@ -1,9 +1,23 @@
-function [y] = ForwardEuler(funcDerivative,initialX, ...
+function [y, x] = ForwardEuler(funcDerivative,initialX, ...
                                     finalX, stepSize, initialY)
+% function [y, x] = ForwardEuler(funcDerivative, initialX, finalX, 
+%                   stepSize, initialY
+% This function is used to find the first order equation via the 
+% ForwardEuler function. 
+%
+% Inputs: 
+%   funcDerivative: This is the derivative of the function we are solving
+%   initialX: This is our lower bound for the X axi
+%   finalX: THis is the upper bound for the x axi
+%   stepSize: This is the step size we are following for the function
+%   initialY: This is the initial y value
+% Ouputs: 
+
     y = zeros((finalX-initialX) / stepSize); 
-    x = zeros((finalX-initalX) / stepSize); 
-    for i = initialX:finalX
+    x = zeros((finalX-initialX) / stepSize); 
+    for i = 1 : ((finalX-initialX) / stepSize)
        y(i) = initialY + (stepSize * funcDerivative(initialY)); 
+       x(i) = i * stepSize; 
        initialY = y(i);
     end
 end

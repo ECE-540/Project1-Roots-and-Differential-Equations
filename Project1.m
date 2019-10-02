@@ -39,7 +39,8 @@ hold on
 
 % Problem 3
 % jagged but becomes stable
-funcDerivate = @(y) -8 * y; 
+funcDerivate = @(y) -8 * y; % function definition
+% call to forward euler to get x and y values
 [x, y] = ForwardEuler(funcDerivate, 0, 10, .2, 10); 
 figure(2)
 title('Forward Euler with step size of 0.2');
@@ -50,6 +51,7 @@ plot(y, x);
 hold on
 
 % not stable, bounces from 10 to -10
+% call to Forward Euler to get x and y values for the new step size
 [x, y] = ForwardEuler(funcDerivate, 0, 10, .25, 10); 
 figure(3)
 title('Forward Euler with step size of 0.25');
@@ -60,13 +62,11 @@ plot(y, x);
 hold on
 
 % stable, goes to 0 nicely
+% call to forward euler to get the new x and y values for the last step
+% size
 [x, y] = ForwardEuler(funcDerivate, 0, 10, .01, 10); 
 figure(4)
 title('Forward Euler with step size of 0.01');
 ylabel('Y values');
 xlabel('X values');
 plot(y, x);
-
-[x, y] = BackwardsEuler(funcDerivate, 0, 10, .1, 10); 
-figure(5)
-plot(y, x); 
