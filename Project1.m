@@ -70,3 +70,7 @@ title('Forward Euler with step size of 0.01');
 ylabel('Y values');
 xlabel('X values');
 plot(y, x);
+
+[x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.25, 10);
+figure(5)
+plot(y, x);
