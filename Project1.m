@@ -43,34 +43,60 @@ funcDerivate = @(y) -8 * y; % function definition
 % call to forward euler to get x and y values
 [x, y] = ForwardEuler(funcDerivate, 0, 10, .2, 10); 
 figure(2)
-title('Forward Euler with step size of 0.2');
-ylabel('Y values');
-xlabel('X values');
 plot(y, x);
-
-hold on
+title('Forward Euler with step size of 0.2');
+ylabel('Y range');
+xlabel('X range');
 
 % not stable, bounces from 10 to -10
 % call to Forward Euler to get x and y values for the new step size
 [x, y] = ForwardEuler(funcDerivate, 0, 10, .25, 10); 
 figure(3)
-title('Forward Euler with step size of 0.25');
-ylabel('Y values');
-xlabel('X values');
 plot(y, x);
-
-hold on
+title('Forward Euler with step size of 0.25');
+ylabel('Y range');
+xlabel('X range');
 
 % stable, goes to 0 nicely
 % call to forward euler to get the new x and y values for the last step
 % size
 [x, y] = ForwardEuler(funcDerivate, 0, 10, .01, 10); 
 figure(4)
-title('Forward Euler with step size of 0.01');
-ylabel('Y values');
-xlabel('X values');
 plot(y, x);
+title('Forward Euler with step size of 0.01');
+ylabel('Y range');
+xlabel('X range');
 
-[x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.25, 10);
+% 0.2 step size
+[x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.20, 10); % backwards euler func call
 figure(5)
 plot(y, x);
+title('Backwards Euler with step size of 0.20');
+ylabel('Y range');
+xlabel('X range');
+
+% 0.25 step size for the backwards euler function call
+[x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.25, 10);
+figure(6)
+plot(y, x);
+title('Backwards Euler with step size of 0.25');
+ylabel('Y range');
+xlabel('X range');
+
+% 0.1 step size for the backwards euler function call
+[x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.10, 10);
+figure(7)
+plot(y, x);
+title('Backwards Euler with step size of 0.01');
+ylabel('Y range');
+xlabel('X range');
+
+%time calculation for the forward euler function
+tic 
+[x, y] = ForwardEuler(funcDerivate, 0, 10, .2, 10); 
+toc
+
+%time calculation for the backwards euler function
+tic
+[x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.20, 10);
+toc
