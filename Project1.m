@@ -87,7 +87,7 @@ xlabel('X range');
 [x, y] = BackwardsEuler(funcDerivate, 0, 10, 0.10, 10);
 figure(7)
 plot(y, x);
-title('Backwards Euler with step size of 0.01');
+title('Backwards Euler with step size of 0.10');
 ylabel('Y range');
 xlabel('X range');
 
